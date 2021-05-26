@@ -2,8 +2,9 @@
     <header class="bg-white border-b">
         <nav class="container flex items-center justify-between px-4 py-6 mx-auto">
             <div class="flex items-center">
-                <img class="object-cover object-left" src="../assets/logo.svg" alt="Tailwindcomponents logo">
-                <h1 class="flex items-center pl-2 mt-2 text-lg text-gray-600 lg:mt-0 sm:ml-2 sm:border-l sm:border-gray-400">Gradient <span class="flex items-center h-5 px-2 ml-2 text-xs font-bold text-white rounded-md bg-primary">Generator</span></h1>
+                <img class="object-cover object-left h-8" src="../assets/sm-logo.svg" alt="Tailwindcomponents logo">
+                <img class="hidden object-cover object-left" src="../assets/logo.svg" alt="Tailwindcomponents logo">
+                <h1 class="flex items-center pl-2 ml-2 text-lg text-gray-600 border-l border-gray-400">Gradient <span class="flex items-center py-0.5 px-2 ml-2 text-xs font-bold text-white rounded-md bg-primary">Generator</span></h1>
             </div>
 
             <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Github">
