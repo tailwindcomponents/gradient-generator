@@ -949,21 +949,16 @@ module.exports = {
     extend: {
       colors: {
         primary: '#0ED3CF',
-
-        // defualt colors
-        transparent: 'transparent',
-        current: 'currentColor',
-        black: colors.black,
-        white: colors.white,
-        gray: colors.coolGray,
-        red: colors.red,
-        yellow: colors.amber,
-        blue: colors.blue,
-
         'blue-gray': colors.blueGray,
         'true-gray': colors.trueGray,
         'warm-gray': colors.warmGray,
         teal: colors.teal,
+        orange: colors.orange,
+        lime: colors.lime,
+        cyan: colors.cyan,
+        'light-blue': colors.lightBlue,
+        fuchsia: colors.fuchsia,
+        rose: colors.rose,
       },
     }
   },
