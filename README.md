@@ -2,7 +2,7 @@
     <img src="public/gradinet-generator.png" alt="gradinet-generator">
 
 ## Tailwind Components Gradient Generator
-This repo content a Gradient Generator page from [tailwindcompnents.com](https://tailwindcomponents.com/gradient-generator/), it's vuejs app build with typescript.
+This repo content a Gradient Generator page from [tailwindcompnents.com](https://tailwindcomponents.com/gradient-generator/), Build with Vuejs.
 
 <a href="https://github.com/tailwindcomponents/gradient-generator/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/tailwindcomponents/gradient-generator">
