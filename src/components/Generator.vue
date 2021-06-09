@@ -21,8 +21,12 @@
                 </div>
             </div>
 
-            <button v-clipboard:copy="code" v-clipboard:success="copied" type="button" class="px-4 py-2 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
-                <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path> <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
+            <button v-clipboard:copy="code" v-clipboard:success="copied" type="button" :class="isCopied ? 'text-primary border-teal-500 ring ring-primary ring-opacity-40' : ''" class="px-4 py-2 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
+                <svg v-if="isCopied" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+
+                <svg v-if="!isCopied" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path> <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
             </button>
         </div>
 
@@ -60,6 +64,7 @@ export default {
             from: 'from-teal-400',
             via: 'via-teal-600',
             to: 'to-teal-800',
+            isCopied: false,
         }
     },
     
@@ -92,8 +97,10 @@ export default {
             this.direction = direction;
         },
 
-        copied(e) {
-            alert('You just copied: ' + e.text);
+        copied() {
+            this.isCopied = true;
+
+            setTimeout(() => this.isCopied = false, 2000);
         },
     }
 }
