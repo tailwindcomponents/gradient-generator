@@ -1,6 +1,6 @@
 <template>
-    <div id="gradientdiv" v-if="text" class="container grid h-64 mx-auto bg-white place-items-center">
-        <h1 class="text-2xl font-bold text-center text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
+    <div id="gradientdiv" v-if="text" class="container grid h-64 px-4 mx-auto text-center bg-white place-items-center">
+        <h1 class="text-2xl font-bold text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
             Tailwind CSS Gradient Generator
         </h1>
     </div>
@@ -21,17 +21,17 @@
                 </div>
             </div>
 
-            <button v-clipboard:copy="code" v-clipboard:success="onCopy" type="button" class="px-4 py-2 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
+            <button v-clipboard:copy="code" v-clipboard:success="copied" type="button" class="px-4 py-2 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path> <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
             </button>
         </div>
 
-        <div class="flex items-center mt-4 space-x-4">
-            <div class="w-1/2">
-                <steps-component :isVia="isVia" @updateStep="setStep"/>
+        <div class="mt-4 sm:flex sm:items-center sm:space-x-4">
+            <div class="sm:w-1/2">
+                <steps-component :step="step" :isVia="isVia" @updateStep="setStep"/>
             </div>
 
-            <div class="w-1/2">
+            <div class="mt-3 sm:w-1/2 sm:mt-0">
                 <directions-component @updateDirection="setDirection"/>
             </div>
         </div>
@@ -92,8 +92,8 @@ export default {
             this.direction = direction;
         },
 
-        onCopy(e) {
-            alert('You just copied: ' + e.text)
+        copied(e) {
+            alert('You just copied: ' + e.text);
         },
     }
 }

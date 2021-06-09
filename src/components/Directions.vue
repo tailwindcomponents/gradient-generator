@@ -1,7 +1,7 @@
 <template>
-    <p class="mb-2 text-gray-700">Direction </p>
+    <p class="mb-2 text-gray-600 capitalize">Directions </p>
 
-    <select class="w-full h-10 border-gray-200 rounded-lg focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" 
+    <select class="w-full h-10 text-gray-800 border-gray-200 rounded-lg focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" 
         v-model="direction" 
         @change="updateDirection"
     >
