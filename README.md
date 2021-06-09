@@ -1,6 +1,22 @@
-# gradient-generator
+<p align="center">
+    <img src="public/gradinet-generator.png" alt="gradinet-generator">
 
-## Project setup
+## Tailwind Components Gradient Generator
+This repo content a Gradient Generator page from [tailwindcompnents.com](https://tailwindcomponents.com/gradient-generator/), it's vuejs app build with typescript.
+
+<a href="https://github.com/tailwindcomponents/gradient-generator/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/tailwindcomponents/gradient-generator">
+</a>
+
+<a href="https://github.com/tailwindcomponents/gradient-generator/stargazers">
+    <img src="https://img.shields.io/github/stars/tailwindcomponents/gradient-generator">
+</a>
+
+<a href="https://twitter.com/TwComponents">
+    <img src="https://img.shields.io/twitter/url?label=Tailwindcomponents&style=social&url=https%3A%2F%2Ftwitter.com%2FTwComponents">
+</a>
+
+### Project setup
 ```
 yarn install
 ```
