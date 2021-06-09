@@ -1,13 +1,14 @@
 <template>
-    <div id="gradientdiv" v-if="text" class="container grid mx-auto bg-white place-items-center h-80">
+    <div id="gradientdiv" v-if="text" class="container grid h-64 mx-auto bg-white place-items-center">
         <h1 class="text-2xl font-bold text-center text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
             Tailwind CSS Gradient Generator
         </h1>
     </div>
 
     <div id="gradientdiv">
-        <div  v-if="!text" class="h-80" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>  
+        <div v-if="!text" class="h-64" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>  
     </div>
+
     <div class="container max-w-md px-4 py-10 mx-auto overflow-hidden rounded-lg">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
@@ -19,110 +20,80 @@
                     <input class="border-gray-200 rounded-md text-primary focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="isVia" type="checkbox"> <span class="text-gray-700 ml-0.5">Via</span>
                 </div>
             </div>
-        <button class="flex text-gray-700 " type="button" v-clipboard:copy="message" v-clipboard:success="onCopy" v-clipboard:error="onError">
-            Copy
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
-        </button>
+
+            <button v-clipboard:copy="code" v-clipboard:success="onCopy" type="button" class="px-4 py-2 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path> <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
+            </button>
         </div>
+
         <div class="flex items-center mt-4 space-x-4">
             <div class="w-1/2">
-                <p class="mb-2 text-gray-700 capitalize" v-text="showColor"></p>
-
-                <select class="w-full h-10 border-gray-200 rounded-lg focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="showColor">
-                    <option value="from">From</option>
-                    <option v-if="isVia" value="via">via</option>
-                    <option value="to">to</option>
-                </select>
+                <steps-component :isVia="isVia" @updateStep="setStep"/>
             </div>
 
             <div class="w-1/2">
-                <p class="mb-2 text-gray-700">Direction </p>
-
-                <select class="w-full h-10 border-gray-200 rounded-lg focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="direction">
-                    <option value="bg-gradient-to-t">To Top</option>
-                    <option value="bg-gradient-to-tr">To Top Right</option>
-                    <option value="bg-gradient-to-r">To Right</option>
-                    <option value="bg-gradient-to-br">To Bottom Right</option>
-                    <option value="bg-gradient-to-b">To Bottom</option>
-                    <option value="bg-gradient-to-bl">To Bottom Left</option>
-                    <option value="bg-gradient-to-l">To Left</option>
-                    <option value="bg-gradient-to-tl">To Top Left</option>
-                </select>
+                <directions-component @updateDirection="setDirection"/>
             </div>
         </div>
-        <div>
-        </div>
 
-        <div class="flex mt-8 overflow-auto h-80">
-            <div v-if="showColor == 'from'">
-                <div v-for="(color, index) in colors" :key="index">
-                    <p class="mb-2 text-gray-700" v-text="color"></p>
-                    
-                    <div class="flex items-center px-2 py-1 mb-2 space-x-2 bg-gray-100 rounded-full md:mb-4">
-                        <button v-for="(number, index) in values" :key="index" :class="'bg-' + color + '-' + number" @click="from = 'from-' + color + '-' + number" class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-sm text-white rounded-full focus:outline-none" v-text="number"></button>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="showColor == 'via'">
-                <div v-for="(color, index) in colors" :key="index">
-                    <p class="mb-2 text-gray-700" v-text="color"></p>
-                    
-                    <div class="flex items-center px-2 py-1 mb-2 space-x-2 bg-gray-100 rounded-full md:mb-4">
-                        <button v-for="(number, index) in values" :key="index" :class="'bg-' + color + '-' + number" @click="via = 'via-' + color + '-' + number" class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-sm text-white rounded-full focus:outline-none" v-text="number"></button>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="showColor == 'to'">
-                <div v-for="(color, index) in colors" :key="index">
-                    <p class="mb-2 text-gray-700" v-text="color"></p>
-                    
-                    <div class="flex items-center px-2 py-1 mb-2 space-x-2 bg-gray-100 rounded-full md:mb-4">
-                        <button v-for="(number, index) in values" :key="index" :class="'bg-' + color + '-' + number" @click="to = 'to-' + color + '-' + number" class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-sm text-white rounded-full focus:outline-none" v-text="number"></button>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>
+        <colors-component @updateColor="setColor" />
     </div>
 </template>
 
 <script>
+import ColorsComponent from "./Colors.vue";
+import DirectionsComponent from "./Directions.vue";
+import StepsComponent from "./Step.vue";
+
 export default {
     name: 'Generator',
+
+    components: { ColorsComponent, StepsComponent, DirectionsComponent },
+
     data() {
         return {
-            message: '',
+            code: '',
             text: false,
             isVia: false,
-            showColor: 'from',
+            step: 'from',
             direction: 'bg-gradient-to-r',
             from: 'from-teal-400',
             via: 'via-teal-600',
             to: 'to-teal-800',
-            colors: ['blue-gray', 'gray', 'true-gray', 'warm-gray', 'lime', 'green', 'teal', 'cyan', 'light-blue', 'blue', 'indigo',  'purple', 'fuchsia', 'red', 'orange', 'yellow', 'pink', 'rose'],
-            values: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']
         }
     },
+    
     mounted() {
-        this.message = document.querySelector("#gradientdiv").innerHTML;
+        this.code = document.querySelector("#gradientdiv").innerHTML;
     },
+
     updated() {
-        this.message = document.querySelector("#gradientdiv").innerHTML;
+        this.code = document.querySelector("#gradientdiv").innerHTML;
     },
+
     methods: {
         getVia() {
             if(!this.isVia) return '';
 
             return this.via;
         },
-        onCopy(e) {
-        alert('You just copied: ' + e.text)
+
+        setColor(color) {
+            if (this.step == 'from') this.from = 'from-' + color;
+            if (this.step == 'via') this.via = 'via-' + color;
+            if (this.step == 'to') this.to = 'to-' + color;
         },
-        onError () {
-        alert('Failed to copy texts')
+
+        setStep(step) {
+            this.step = step;
+        },
+
+        setDirection(direction) {
+            this.direction = direction;
+        },
+
+        onCopy(e) {
+            alert('You just copied: ' + e.text)
         },
     }
 }
