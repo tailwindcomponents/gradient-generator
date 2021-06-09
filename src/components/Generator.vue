@@ -5,8 +5,7 @@
         </h1>
     </div>
 
-    <div v-if="!text" class="h-80" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>
-        
+    <div v-if="!text" class="h-80" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>  
     <div class="container max-w-md px-4 py-10 mx-auto overflow-hidden rounded-lg">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
@@ -19,7 +18,7 @@
                 </div>
             </div>
 
-            <button type="button" class="flex items-center px-4 py-2 space-x-3 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
+            <button v-clipboard:copy="message" v-clipboard:success="onCopy" v-clipboard:error="onError" type="button" class="flex items-center px-4 py-2 space-x-3 text-gray-500 transition-colors duration-200 transform border rounded-lg focus:outline-none focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path> <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
                 <span class="text-gray-700">Copy</span>
             </button>
@@ -76,6 +75,8 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
     </div>
 </template>
@@ -83,7 +84,18 @@
 <script>
 export default {
     name: 'Generator',
-
+    setup() {
+      const message = 'test'
+      const onCopy = (e) => {
+          console.log(e);
+        alert('You just copied: ' + e.text)
+      }
+      const onError = () => {
+        alert('Failed to copy texts')
+      }
+ 
+      return { message, onCopy, onError }
+    },
     data() {
         return {
             text: false,
@@ -97,7 +109,6 @@ export default {
             values: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']
         }
     },
-
     methods: {
         getVia() {
             if(!this.isVia) return '';
