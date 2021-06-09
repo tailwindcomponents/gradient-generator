@@ -1,11 +1,13 @@
 <template>
-    <div v-if="text" class="container grid mx-auto bg-white place-items-center h-80">
+    <div id="gradientdiv" v-if="text" class="container grid mx-auto bg-white place-items-center h-80">
         <h1 class="text-2xl font-bold text-center text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
             Tailwind CSS Gradient Generator
         </h1>
     </div>
 
-    <div v-if="!text" class="h-80" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>  
+    <div id="gradientdiv">
+        <div  v-if="!text" class="h-80" :class="direction + ' ' + from + ' ' + getVia() + ' ' + to"></div>  
+    </div>
     <div class="container max-w-md px-4 py-10 mx-auto overflow-hidden rounded-lg">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
@@ -17,7 +19,10 @@
                     <input class="border-gray-200 rounded-md text-primary focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="isVia" type="checkbox"> <span class="text-gray-700 ml-0.5">Via</span>
                 </div>
             </div>
-
+        <button class="flex text-gray-700 " type="button" v-clipboard:copy="message" v-clipboard:success="onCopy" v-clipboard:error="onError">
+            Copy
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path></svg>
+        </button>
         </div>
         <div class="flex items-center mt-4 space-x-4">
             <div class="w-1/2">
@@ -87,20 +92,9 @@
 <script>
 export default {
     name: 'Generator',
-    setup() {
-      const message = 'test'
-      const onCopy = (e) => {
-          console.log(e);
-        alert('You just copied: ' + e.text)
-      }
-      const onError = () => {
-        alert('Failed to copy texts')
-      }
- 
-      return { message, onCopy, onError }
-    },
     data() {
         return {
+            message: '',
             text: false,
             isVia: false,
             showColor: 'from',
@@ -112,12 +106,24 @@ export default {
             values: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']
         }
     },
+    mounted() {
+        this.message = document.querySelector("#gradientdiv").innerHTML;
+    },
+    updated() {
+        this.message = document.querySelector("#gradientdiv").innerHTML;
+    },
     methods: {
         getVia() {
             if(!this.isVia) return '';
 
             return this.via;
-        }
+        },
+        onCopy(e) {
+        alert('You just copied: ' + e.text)
+        },
+        onError () {
+        alert('Failed to copy texts')
+        },
     }
 }
 </script>
