@@ -1,8 +1,10 @@
 <template>
-    <div id="gradientdiv" v-if="text" class="container grid h-64 px-4 mx-auto text-center bg-white place-items-center">
-        <h1 class="text-2xl font-bold text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
-            Tailwind CSS Gradient Generator
-        </h1>
+    <div class="border-b">
+        <div id="gradientdiv" v-if="text" class="container grid h-64 px-4 mx-auto text-center bg-white place-items-center">
+            <h1 class="text-2xl font-bold text-transparent md:text-3xl bg-clip-text " :class="direction + ' ' + from +  ' ' + getVia() + ' ' + to">
+                Tailwind CSS Gradient Generator
+            </h1>
+        </div>
     </div>
 
     <div id="gradientdiv">
