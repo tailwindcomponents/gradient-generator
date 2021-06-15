@@ -10,7 +10,9 @@
     </div>
 
     <div class="container max-w-md px-4 py-10 mx-auto overflow-hidden rounded-lg">
-        <div class="flex items-center justify-between">
+        <default-gradients @updateColor="setDefaultColor" />
+        
+        <div class="flex items-center justify-between mt-4">
             <div class="flex items-center space-x-4">
                 <div>
                     <input class="border-gray-200 rounded-md text-primary focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="text" type="checkbox"> <span class="text-gray-700 ml-0.5">Text</span>
@@ -48,11 +50,12 @@
 import ColorsComponent from "./Colors.vue";
 import DirectionsComponent from "./Directions.vue";
 import StepsComponent from "./Step.vue";
+import DefaultGradients from "./DefaultGradients.vue";
 
 export default {
     name: 'Generator',
 
-    components: { ColorsComponent, StepsComponent, DirectionsComponent },
+    components: { ColorsComponent, StepsComponent, DirectionsComponent, DefaultGradients },
 
     data() {
         return {
@@ -95,6 +98,12 @@ export default {
 
         setDirection(direction) {
             this.direction = direction;
+        },
+
+        setDefaultColor(color) {
+            this.from = 'from-' + color + '-400';
+            this.via = 'via-' + color + '-600';
+            this.to = 'to-' + color + '-800';
         },
 
         copied() {
