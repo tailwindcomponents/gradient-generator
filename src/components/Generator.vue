@@ -16,12 +16,23 @@
         
         <div class="flex items-center justify-between mt-4">
             <div class="flex items-center space-x-4">
-                <div>
-                    <input class="border-gray-200 rounded-md text-primary focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="text" type="checkbox"> <span class="text-gray-700 ml-0.5">Text</span>
+                <div class="flex items-center space-x-2">
+                    <div class="relative w-10 h-5 transition duration-200 ease-linear bg-gray-300 rounded-full" :class="[text ? 'bg-primary' : 'bg-gray-300']">
+                        <label for="text" @click="text =  !text" class="absolute left-0 w-5 h-5 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer" :class="[text ? 'translate-x-full border-primary' : 'translate-x-0 border-gray-300']"></label>
+                        <input type="checkbox" name="text" class="hidden w-full h-full rounded-full appearance-none active:outline-none focus:outline-none">
+                    </div>
+
+                    <span class="text-gray-700">Text</span>
                 </div>
 
-                <div>
-                    <input class="border-gray-200 rounded-md text-primary focus:border-teal-500 focus:ring focus:ring-primary focus:ring-opacity-40" v-model="isVia" type="checkbox"> <span class="text-gray-700 ml-0.5">Via</span>
+
+                <div class="flex items-center space-x-2">
+                    <div class="relative w-10 h-5 transition duration-200 ease-linear bg-gray-300 rounded-full" :class="[isVia ? 'bg-primary' : 'bg-gray-300']">
+                        <label for="isVia" @click="isVia =  !isVia" class="absolute left-0 w-5 h-5 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer" :class="[isVia ? 'translate-x-full border-primary' : 'translate-x-0 border-gray-300']"></label>
+                        <input type="checkbox" name="text" class="hidden w-full h-full rounded-full appearance-none active:outline-none focus:outline-none">
+                    </div>
+
+                    <span class="text-gray-700">Via</span>
                 </div>
             </div>
 

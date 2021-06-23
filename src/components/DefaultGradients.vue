@@ -1,5 +1,5 @@
 <template>
-    <p class="mb-2 text-gray-600 capitalize">Default Gradients</p>
+    <p class="mb-2 text-gray-600 capitalize">suggestions</p>
 
     <div class="space-x-4 overflow-y-auto whitespace-nowrap">
         <button v-for="color in colors" :key="color" 
