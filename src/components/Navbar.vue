@@ -2,8 +2,10 @@
     <header class="bg-white border-b">
         <nav class="container flex items-center justify-between px-4 py-6 mx-auto">
             <div class="flex items-center">
-                <img class="object-cover object-left h-8 sm:hidden" src="../assets/sm-logo.svg" alt="Tailwindcomponents logo">
-                <img class="hidden object-cover object-left sm:block" src="../assets/logo.svg" alt="Tailwindcomponents logo">
+                <a href="https://tailwindcomponents.com/">
+                    <img class="object-cover object-left h-8 sm:hidden" src="../assets/sm-logo.svg" alt="Tailwindcomponents logo">
+                    <img class="hidden object-cover object-left sm:block" src="../assets/logo.svg" alt="Tailwindcomponents logo">
+                </a>
                 <h1 class="flex items-center pl-2 ml-2 text-lg text-gray-600 border-l border-gray-400">Gradient <span class="flex items-center py-0.5 px-2 ml-2 text-xs font-bold text-white rounded-md bg-primary">Generator</span></h1>
             </div>
 
