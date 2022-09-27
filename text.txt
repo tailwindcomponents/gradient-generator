@@ -1,9 +1,4 @@
-const colors = require('tailwindcss/colors');
-
-module.exports = {
-  purge: { 
-    content:['./public/index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-    options: {
+options: {
       safelist: [
         'bg-black',
         'bg-white',
@@ -943,29 +938,3 @@ module.exports = {
         'to-rose-900',
       ],
     }
-  },
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-      colors: {
-        primary: '#0ED3CF',
-        'blue-gray': colors.blueGray,
-        'true-gray': colors.trueGray,
-        'warm-gray': colors.warmGray,
-        teal: colors.teal,
-        orange: colors.orange,
-        lime: colors.lime,
-        cyan: colors.cyan,
-        'light-blue': colors.lightBlue,
-        fuchsia: colors.fuchsia,
-        rose: colors.rose,
-      },
-    }
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-}

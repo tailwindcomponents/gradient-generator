@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white border-b">
+    <header class="bg-white">
         <nav class="container flex items-center justify-between px-4 py-6 mx-auto">
             <div class="flex items-center">
                 <a href="https://tailwindcomponents.com/">
@@ -9,7 +9,7 @@
                 <h1 class="flex items-center pl-2 ml-2 text-lg text-gray-600 border-l border-gray-400">Gradient <span class="flex items-center py-0.5 px-2 ml-2 text-xs font-bold text-white rounded-md bg-primary">Generator</span></h1>
             </div>
 
-            <a href="https://github.com/tailwindcomponents/gradient-generator" class="text-gray-700 hover:text-primary" aria-label="Github">
+            <a href="https://github.com/tailwindcomponents/gradient-generator" class="text-gray-600 duration-300 transition-colors hover:text-primary" aria-label="Github">
                 <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path

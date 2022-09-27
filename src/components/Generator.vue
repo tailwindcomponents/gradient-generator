@@ -77,9 +77,9 @@ export default {
             isVia: false,
             step: 'from',
             direction: 'bg-gradient-to-r',
-            from: 'from-teal-400',
-            via: 'via-teal-600',
-            to: 'to-teal-800',
+            from: 'from-teal-300',
+            via: 'via-teal-400',
+            to: 'to-teal-500',
             isCopied: false,
         }
     },
