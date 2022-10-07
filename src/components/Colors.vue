@@ -20,7 +20,7 @@ export default {
 
     data() {
         return {
-            colors: ['blue-gray', 'gray', 'true-gray', 'warm-gray', 'lime', 'green', 'teal', 'cyan', 'light-blue', 'blue', 'indigo',  'purple', 'fuchsia', 'red', 'orange', 'yellow', 'pink', 'rose'],
+            colors: ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'],
             values: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
         }
     },
