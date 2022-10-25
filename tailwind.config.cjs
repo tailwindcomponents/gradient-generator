@@ -899,6 +899,10 @@ module.exports = {
       colors: {
         primary: "#0ED3CF",
       },
+
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [
