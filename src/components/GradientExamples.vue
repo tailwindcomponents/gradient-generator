@@ -99,6 +99,114 @@ export default {
                     classTitle: 'emerald-400 - cyan-400',
                     style: 'bg-gradient-to-r from-emerald-400 to-cyan-400'
                 },
+
+                {
+                    title: 'Snowflake',
+                    classTitle: 'indigo-400 - cyan-400',
+                    style: 'bg-gradient-to-r from-indigo-400 to-cyan-400'
+                },
+
+                {
+                    title: 'Blue Bird',
+                    classTitle: 'cyan-500 - blue-500',
+                    style: 'bg-gradient-to-r from-cyan-500 to-blue-500'
+                },
+
+                {
+                    title: 'Blueprint',
+                    classTitle: 'indigo-500 - blue-500',
+                    style: 'bg-gradient-to-r from-indigo-500 to-blue-500'
+                },
+
+                {
+                    title: 'Salvia',
+                    classTitle: 'blue-600 - violet-600',
+                    style: 'bg-gradient-to-r from-blue-600 to-violet-600'
+                },
+
+                {
+                    title: 'Snowflake',
+                    classTitle: 'fuchsia-500 - cyan-500',
+                    style: 'bg-gradient-to-r from-fuchsia-500 to-cyan-500'
+                },
+
+                {
+                    title: 'Heartsease',
+                    classTitle: 'fuchsia-600 - pink-600',
+                    style: 'bg-gradient-to-r from-fuchsia-600 to-pink-600'
+                },
+
+                {
+                    title: 'Amaranthus',
+                    classTitle: 'fuchsia-600 - purple-600',
+                    style: 'bg-gradient-to-r from-fuchsia-600 to-purple-600'
+                },
+
+                {
+                    title: 'Candy',
+                    classTitle: 'fuchsia-500 - pink-500',
+                    style: 'bg-gradient-to-r from-fuchsia-500 to-pink-500'
+                },
+
+                {
+                    title: 'Verbena',
+                    classTitle: 'violet-500 - purple 500',
+                    style: 'bg-gradient-to-r from-violet-500 to-purple-500'
+                },
+
+                {
+                    title: 'Clematis',
+                    classTitle: 'violet-600 - indigo-600',
+                    style: 'bg-gradient-to-r from-violet-600 to-indigo-600'
+                },
+
+                {
+                    title: 'Hibiscus',
+                    classTitle: 'purple-500 - purple-900',
+                    style: 'bg-gradient-to-r from-purple-500 to-purple-900'
+                },
+
+                {
+                    title: 'Clear Night',
+                    classTitle: 'blue-800 - indigo-900',
+                    style: 'bg-gradient-to-r from-blue-800 to-indigo-900'
+                },
+
+                {
+                    title: 'Clay',
+                    classTitle: 'neutral-300 - stone-400',
+                    style: 'bg-gradient-to-r from-neutral-300 to-stone-400'
+                },
+
+                {
+                    title: 'Soil',
+                    classTitle: 'stone-500 - stone-700',
+                    style: 'bg-gradient-to-r from-stone-500 to-stone-700'
+                },
+
+                {
+                    title: 'Silver',
+                    classTitle: 'slate-300 - slate-500',
+                    style: 'bg-gradient-to-r from-slate-300 to-slate-500'
+                },
+
+                {
+                    title: 'Fir Tree',
+                    classTitle: 'emerald-500 - emerald-900',
+                    style: 'bg-gradient-to-r from-emerald-500 to-emerald-900'
+                },
+
+                {
+                    title: 'Metal',
+                    classTitle: 'slate-500 - slate-800',
+                    style: 'bg-gradient-to-r from-slate-500 to-slate-800'
+                },
+
+                {
+                    title: 'Darkness',
+                    classTitle: 'slate-900 - slate-700',
+                    style: 'bg-gradient-to-r from-slate-900 to-slate-700'
+                },
             ]
         }
     },
