@@ -11,27 +11,19 @@
         
         <div class="grid grid-cols-1 gap-10 mt-12 md:grid-cols-2 xl:grid-cols-3">
             <div v-for="gradient in gradients" :key="gradient.title">
-                <div class="w-full h-56 lg:h-60 rounded-xl" :class="gradient.style"></div>
-                <div class="flex items-center justify-between mt-6 ">
-                    <h3 v-text="gradient.title" class="text-lg font-medium text-gray-500 "></h3>
-
-                    <div class="flex items-center space-x-3 ">
-                        <p v-text="gradient.classTitle" class="text-base font-medium text-gray-500 "></p>
-
-                        <copy-style :style="gradient.style" />
-                    </div>
-                </div>
+                <gradient-card :gradient="gradient" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import CopyStyle from "./CopyStyle.vue";
+import GradientCard from "./GradientCard.vue";
+
 export default {
     name: 'Gradient Examples',
 
-    components: { CopyStyle },
+    components: { GradientCard },
 
     data() {
         return {
