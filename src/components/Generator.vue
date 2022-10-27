@@ -9,9 +9,21 @@
             </div>
 
             <div class="mt-10">
-                <h3 class="text-xl font-semibold text-gray-800 ">Choose Colors</h3>
+                <div class="relative mt-12 lg:flex lg:space-x-10 xl:space-x-16">
+                    <div class="w-full lg:w-1/2 xl:w-2/5">
+                        <h3 class="text-xl font-semibold text-gray-800 ">Choose Colors</h3>
 
-                <p class="max-w-md mt-2 text-gray-500 ">Pick colors from the Tailwind CSS Palette that fit your design.</p>
+                        <p class="max-w-md mt-2 text-gray-500 ">Pick colors from the Tailwind CSS Palette that fit your design.</p>
+                    </div>
+
+                    <div class="w-full mt-4 lg:w-1/2 xl:w-3/5 lg:mt-0" v-show="active == 'text'">
+                        <div>
+                            <label class="font-medium text-gray-500">Your Text</label>
+                            
+                            <input v-model="text" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20" />
+                        </div>
+                    </div>
+                </div>
 
                 <div class="relative mt-6 lg:flex lg:space-x-10 xl:space-x-16">
                     <div class="transition-all duration-500 " :class="fullWidth ? 'w-full ease-in' : ' lg:w-1/2 xl:w-2/5 ease-out'">
@@ -27,10 +39,8 @@
                             </button>
                         </div>
 
-                        <div v-show="active == 'text'" class="flex items-center justify-center w-full bg-gray-50 rounded-xl h-72 md:h-96">
-                            <h2 class="text-2xl font-bold text-transparent sm:text-3xl md:text-4xl bg-clip-text" :class="classes()">
-                                Awesome Gradient 
-                            </h2>
+                        <div v-show="active == 'text'" class="flex items-center justify-center w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96">
+                            <h2 v-text="text" class="text-2xl font-bold sm:text-3xl md:text-4xl " :class="classes()"> </h2>
                         </div>
 
                         <button @click="randomGradient" class="flex items-center mx-auto mt-4 space-x-3 font-semibold text-gray-500 transition-colors duration-300 hover:text-indigo-500 focus:outline-none">
@@ -52,21 +62,21 @@
                         <p class="max-w-md mt-2 text-gray-500 ">Add the third color if needed and set the direction of the gradient if you are looking for a linear-gradients or radial-gradient.</p>
                     </div>
 
-                    <div class="w-full lg:w-1/2 xl:w-3/5 mt-4 lg:mt-0">
+                    <div class="w-full mt-4 lg:w-1/2 xl:w-3/5 lg:mt-0">
                         <div class="md:flex md:items-center md:space-x-4">
                             <div class="md:w-1/2">
                                 <label class="font-medium text-gray-500">Via</label>
                                 
-                                <select v-model="viaActive" class="w-full h-12 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
+                                <select v-model="viaActive" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
                                     <option value="false">InActive</option>
                                     <option value="true">Active</option>
                                 </select>
                             </div>
 
-                             <div class="md:w-1/2 mt-4 md:mt-0">
+                             <div class="mt-4 md:w-1/2 md:mt-0">
                                 <label class="font-medium text-gray-500">Direction</label>
                                 
-                                <select v-model="direction" class="w-full h-12 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
+                                <select v-model="direction" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
                                     <option value="bg-gradient-to-t">To Top</option>
                                     <option value="bg-gradient-to-tr">To Top Right</option>
                                     <option value="bg-gradient-to-r">To Right</option>
@@ -77,6 +87,26 @@
                                     <option value="bg-gradient-to-tl">To Top Left</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="mt-4 md:flex md:items-center md:space-x-4">
+                            <input :value="classes()" disabled class="flex-1 h-12 px-4 font-medium text-gray-700 bg-white border border-gray-200 rounded-md cursor-text focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20" />
+                            
+                            <button v-clipboard:copy="classes()" v-clipboard:success="copied" class="flex duration-300 transition-color bg-gray-900 hover:bg-gray-700 text-white items-center justify-center w-full px-4 py-2.5 space-x-3 font-semibold rounded-md focus:outline-none sm:w-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M17.663 3.118c.225.015.45.032.673.05C19.876 3.298 21 4.604 21 6.109v9.642a3 3 0 01-3 3V16.5c0-5.922-4.576-10.775-10.384-11.217.324-1.132 1.3-2.01 2.548-2.114.224-.019.448-.036.673-.051A3 3 0 0113.5 1.5H15a3 3 0 012.663 1.618zM12 4.5A1.5 1.5 0 0113.5 3H15a1.5 1.5 0 011.5 1.5H12z" clip-rule="evenodd" />
+                                <path d="M3 8.625c0-1.036.84-1.875 1.875-1.875h.375A3.75 3.75 0 019 10.5v1.875c0 1.036.84 1.875 1.875 1.875h1.875A3.75 3.75 0 0116.5 18v2.625c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625v-12z" />
+                                <path d="M10.5 10.5a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963 5.23 5.23 0 00-3.434-1.279h-1.875a.375.375 0 01-.375-.375V10.5z" />
+                                </svg>
+
+                                <span v-show="!isCopy">
+                                    Copy CSS
+                                </span>
+
+                                <span v-show="isCopy">
+                                    Copied
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -98,6 +128,8 @@ export default {
             fullWidth: false,
             viaActive: false,
             active: 'color',
+            isCopy: false,
+            text: 'Awesome Gradient',
             direction: 'bg-gradient-to-r',
             from: 'from-violet-600',
             via: 'via-black',
@@ -106,18 +138,31 @@ export default {
     },
 
     methods: {
+        copied() {
+            this.isCopy = true;
+
+            setTimeout(() => this.isCopy = false, 1000);
+        },
+
         updateActive(active) {
             this.fullWidth = false;
             this.active = active;
         },
 
         classes() {
-            console.log('hey');
-            if (this.viaActive == 'true') {
-                return this.direction + ' ' + this.from + ' ' + this.to + ' ' + this.via;
+            if (this.active == 'color') {
+                if (this.viaActive == 'true') {
+                    return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to;
+                }
+    
+                return this.direction + ' ' + this.from + ' ' + this.to;
             }
 
-            return this.direction + ' ' + this.from + ' ' + this.to;
+            if (this.viaActive == 'true') {
+                return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to + ' bg-clip-text text-transparent';
+            }
+
+            return this.direction + ' ' + this.from + ' ' + this.to + ' bg-clip-text text-transparent';
         },
 
         randomGradient() {
