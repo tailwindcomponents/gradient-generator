@@ -52,9 +52,9 @@
                         <p class="max-w-md mt-2 text-gray-500 ">Add the third color if needed and set the direction of the gradient if you are looking for a linear-gradients or radial-gradient.</p>
                     </div>
 
-                    <div class="w-full lg:w-1/2 xl:w-3/5">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-1/2">
+                    <div class="w-full lg:w-1/2 xl:w-3/5 mt-4 lg:mt-0">
+                        <div class="md:flex md:items-center md:space-x-4">
+                            <div class="md:w-1/2">
                                 <label class="font-medium text-gray-500">Via</label>
                                 
                                 <select v-model="viaActive" class="w-full h-12 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
@@ -63,7 +63,7 @@
                                 </select>
                             </div>
 
-                             <div class="w-1/2">
+                             <div class="md:w-1/2 mt-4 md:mt-0">
                                 <label class="font-medium text-gray-500">Direction</label>
                                 
                                 <select v-model="direction" class="w-full h-12 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
