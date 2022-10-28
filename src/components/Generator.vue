@@ -1,6 +1,6 @@
 <template>
     <div class="container relative z-50 px-4 mx-auto -mt-16 2xl:-mt-28">
-        <div id="generator" class="p-6 bg-white shadow-md lg:p-12 scroll-mt-10 rounded-xl shadow-gray-200/90">
+        <div id="generator" class="p-6 bg-white shadow-md lg:p-12 scroll-mt-6 rounded-xl shadow-gray-200/90">
             <h2 class="text-2xl font-bold text-center text-gray-800 md:text-3xl ">Create Your Gradient</h2>
             <p class="mt-2 text-center text-gray-500 md:mt-4 ">Choose if you are looking for text or background gradients.</p>
 
@@ -27,7 +27,7 @@
 
                 <div class="relative mt-6 lg:flex lg:space-x-10 xl:space-x-16">
                     <div class="transition-all duration-500 " :class="fullWidth ? 'w-full ease-in' : ' lg:w-1/2 xl:w-2/5 ease-out'">
-                        <div v-show="active == 'color'" class="relative w-full rounded-xl h-72 md:h-96" :class="classes()">
+                        <div v-show="active == 'color'" class="relative w-full rounded-xl h-72 md:h-96 xl:h-[28rem]" :class="classes()">
                             <button @click="fullWidth = !fullWidth" class="absolute hidden p-3 transition-colors duration-300 bg-white rounded-full lg:block focus:outline-none hover:bg-indigo-100 right-4 top-4">
                                 <svg v-show="!fullWidth" width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.5 1.26251C10.5 1.12189 10.4297 0.981262 10.3359 0.864075C10.2188 0.770325 10.0781 0.700012 9.9375 0.700012H7.71094C7.54688 0.700012 7.40625 0.770325 7.3125 0.864075C7.19531 0.981262 7.14844 1.12189 7.14844 1.26251C7.14844 1.42657 7.19531 1.5672 7.3125 1.66095L7.96875 2.3172L5.4375 4.82501C5.39062 4.87189 5.36719 4.9422 5.36719 5.01251C5.36719 5.10626 5.39062 5.17657 5.4375 5.22345L5.97656 5.76251C6.02344 5.80939 6.09375 5.83282 6.1875 5.83282C6.25781 5.83282 6.32812 5.80939 6.375 5.76251L8.88281 3.23126L9.53906 3.88751C9.63281 4.0047 9.77344 4.05157 9.9375 4.05157C10.0781 4.05157 10.2188 4.0047 10.3359 3.88751C10.4297 3.79376 10.5 3.65314 10.5 3.48907V1.26251ZM4.125 6.13751C4.17188 6.09064 4.21875 6.0672 4.3125 6.0672C4.38281 6.0672 4.45312 6.09064 4.52344 6.13751L5.0625 6.67657C5.10938 6.74689 5.13281 6.8172 5.13281 6.88751C5.13281 6.98126 5.10938 7.02814 5.0625 7.07501L2.53125 9.58282L3.1875 10.2391C3.28125 10.3563 3.35156 10.4969 3.35156 10.6375C3.35156 10.8016 3.28125 10.9422 3.1875 11.0359C3.07031 11.1531 2.92969 11.2 2.78906 11.2H0.5625C0.398438 11.2 0.257812 11.1531 0.164062 11.0359C0.046875 10.9422 0 10.8016 0 10.6375V8.41095C0 8.27032 0.046875 8.1297 0.164062 8.01251C0.257812 7.91876 0.398438 7.84845 0.5625 7.84845C0.703125 7.84845 0.84375 7.91876 0.960938 8.01251L1.61719 8.66876L4.125 6.13751Z" fill="#65748A"/>
@@ -39,7 +39,7 @@
                             </button>
                         </div>
 
-                        <div v-show="active == 'text'" class="flex items-center justify-center w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96">
+                        <div v-show="active == 'text'" class="flex items-center justify-center w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
                             <h2 v-text="text" class="text-2xl font-bold sm:text-3xl md:text-4xl " :class="classes()"> </h2>
                         </div>
 
@@ -52,7 +52,9 @@
                         </button>
                     </div>
 
-                    <div v-show="!fullWidth" class="mt-6 bg-gray-100 h-96 lg:mt-0 lg:w-1/2 xl:w-3/5" ></div>
+                    <div v-show="!fullWidth" class="mt-6 flex flex-col h-72 md:h-96 xl:h-[28rem] lg:mt-0 lg:w-1/2 xl:w-3/5" >
+                        <color-palette :direction="direction" :from="from" :via="via" :to="to" :viaActive="viaActive" />
+                    </div>
                 </div>
 
                 <div class="relative mt-12 lg:flex lg:space-x-10 xl:space-x-16">
@@ -117,11 +119,12 @@
 
 <script>
 import ToggleActive from "./ToggleActive.vue";
+import ColorPalette from "./ColorPalette.vue";
 
 export default {
     props: ['gradients'],
     
-    components: { ToggleActive },
+    components: { ToggleActive, ColorPalette },
 
     data() {
         return {
