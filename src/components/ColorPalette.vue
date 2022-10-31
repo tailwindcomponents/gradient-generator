@@ -76,26 +76,26 @@ export default {
 
             this.isChange = true;
 
-            setTimeout(() => this.isChange = false, 1000);
+            setTimeout(() => this.isChange = false, 500);
         }
     },
     methods: {
         selectedColor(color) {
             if (this.select == 'from') {
                 if (this.from == color) {
-                    return 'outline outline-[#0FD3CF]';
+                    return 'ring ring-[#0FD3CF]';
                 }
             }
 
             if (this.select == 'via') {
                 if (this.via == color) {
-                    return 'outline outline-[#0FD3CF]';
+                    return 'ring ring-[#0FD3CF]';
                 }
             }
 
             if (this.select == 'to') {
                 if (this.to == color) {
-                    return 'outline outline-[#0FD3CF]';
+                    return 'ring ring-[#0FD3CF]';
                 }
             }
         },
