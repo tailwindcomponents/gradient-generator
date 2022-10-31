@@ -14,7 +14,7 @@ import axios from "axios";
 export default {
     data() {
         return {
-            stargazers_count: 0,
+            stargazers_count: 12,
         }
     },
 
