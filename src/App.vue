@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col min-h-screen font-inter">
+    <div class="flex flex-col min-h-screen font-inter bg-[#FCFCFD]">
         <header-component />
 
         <generator-component :gradients="gradients" />

@@ -19,7 +19,7 @@
     </div>
 
     <div class="flex items-center justify-between mt-6 ">
-        <h3 v-text="gradient.title" class="text-lg font-medium text-gray-500 "></h3>
+        <p v-text="gradient.title" class="text-lg font-medium text-gray-500"></p>
 
         <div class="flex items-center space-x-3 ">
             <p v-text="gradient.classTitle" class="text-base font-medium text-gray-500"></p>
