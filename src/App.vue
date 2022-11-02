@@ -6,6 +6,8 @@
 
         <gradient-examples :gradients="gradients" />
 
+        
+
         <footer-component />
     </div>
 </template>
