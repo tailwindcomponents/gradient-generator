@@ -54,7 +54,10 @@
 
                     <div v-show="!fullWidth" class="mt-6 lg:mt-0 lg:w-1/2 xl:w-3/5" >
                         <color-palette 
-                            :from="from" :via="via" :to="to"
+                            :to="to"
+                            :from="from" 
+                            :via="via" 
+                            :viaActive="viaActive"
                             @updateFromColor="updateFromColor"
                             @updateViaColor="updateViaColor"
                             @updateToColor="updateToColor"
@@ -75,8 +78,8 @@
                                 <label class="font-medium text-gray-500">Via</label>
                                 
                                 <select v-model="viaActive" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
-                                    <option value="false">InActive</option>
-                                    <option value="true">Active</option>
+                                    <option :value="false">InActive</option>
+                                    <option :value="true">Active</option>
                                 </select>
                             </div>
 
@@ -171,14 +174,14 @@ export default {
 
         classes() {
             if (this.active == 'background') {
-                if (this.viaActive == 'true') {
+                if (this.viaActive == true) {
                     return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to;
                 }
     
                 return this.direction + ' ' + this.from + ' ' + this.to;
             }
 
-            if (this.viaActive == 'true') {
+            if (this.viaActive == true) {
                 return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to + ' bg-clip-text text-transparent';
             }
 
