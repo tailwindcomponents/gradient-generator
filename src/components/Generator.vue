@@ -79,7 +79,7 @@
                                 
                                 <custom-select 
                                     :options="[
-                                        { title: 'isActive', value: false },
+                                        { title: 'Inactive', value: false },
                                         { title: 'Active', value: true },
                                     ]"
                                     :default="viaActive"

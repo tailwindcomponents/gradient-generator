@@ -18,17 +18,17 @@
              <div v-for="(color, index) in colors" :key="index">
                 <p class="mb-2 text-gray-600 capitalize" v-text="color"></p>
                 
-                <div class="grid grid-cols-3 gap-6 md:gap-4 2xl:gap-6 sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-6 xl:grid-cols-10">
+                <div class="grid grid-cols-4 gap-6 md:gap-4 2xl:gap-6 sm:grid-cols-7 md:grid-cols-10 lg:grid-cols-6 xl:grid-cols-10">
                     <div v-for="(number, index) in values" :key="index" >
                         <div>
                             <button
-                                class="w-full h-16 rounded-lg md:h-10 2xl:h-12 focus:outline-none" 
+                                class="w-full h-10 sm:h-12 rounded-lg md:h-10 2xl:h-12 focus:outline-none" 
                                 @click="updateColor(select + '-' + color + '-' + number)" 
                                 :class="'bg-' + color + '-' + number + ' ' + (selectedColor(select + '-' + color + '-' + number) ? 'ring ring-[#0FD3CF]' :  '')"
                             >
                             </button>
                             
-                            <h3 class="mt-1 text-sm text-center" :class="selectedColor(select + '-' + color + '-' + number) ? 'text-[#0FD3CF] font-bold' : 'text-gray-500 font-medium'" v-text="number"></h3>
+                            <p class="mt-1 text-sm text-center" :class="selectedColor(select + '-' + color + '-' + number) ? 'text-[#0FD3CF] font-bold' : 'text-gray-500 font-medium'" v-text="number"></p>
                         </div>
                     </div>
                 </div>
