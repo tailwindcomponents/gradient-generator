@@ -28,7 +28,7 @@
                             >
                             </button>
                             
-                            <h3 class="mt-1 text-sm font-medium text-center" :class="selectedColor(select + '-' + color + '-' + number) ? 'text-[#0FD3CF]' : 'text-gray-500'" v-text="number"></h3>
+                            <h3 class="mt-1 text-sm text-center" :class="selectedColor(select + '-' + color + '-' + number) ? 'text-[#0FD3CF] font-bold' : 'text-gray-500 font-medium'" v-text="number"></h3>
                         </div>
                     </div>
                 </div>

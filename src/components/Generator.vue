@@ -39,8 +39,8 @@
                             </button>
                         </div>
 
-                        <div v-show="active == 'text'" class="flex items-center justify-center w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
-                            <h2 v-text="text" class="text-2xl font-bold sm:text-3xl md:text-4xl " :class="classes()"> </h2>
+                        <div v-show="active == 'text'" class="w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
+                            <h2 v-text="text" class="text-2xl font-bold mx-auto sm:text-3xl md:text-4xl break-words" :class="classes()"> </h2>
                         </div>
 
                         <button @click="randomGradient" class="flex items-center mx-auto mt-4 space-x-3 font-semibold text-gray-500 transition-colors duration-300 hover:text-indigo-500 focus:outline-none">

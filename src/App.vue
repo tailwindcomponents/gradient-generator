@@ -6,7 +6,27 @@
 
         <gradient-examples :gradients="gradients" />
 
-        
+        <section class="container px-4 pb-20 mx-auto">
+            <div class="lg:flex lg:items-center lg:space-x-12">
+                <div class="lg:w-1/2 ">
+                    <span class="text-xl font-bold text-transparent bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 bg-clip-text">Open Source Tool</span>
+
+                    <h2 class="mt-4 text-3xl font-bold text-gray-800">
+                        Tailwind CSS Gradient Generator
+                    </h2>
+
+                    <p class="mt-4 text-gray-500">
+                        Gradient refers to the gradual transition from one color to another color or multiple colors. It makes objects stand out by adding a new dimension to the design and adding realism to the object. In fact, real life is not made of flat objects with flat colors.
+                    </p>
+
+                    <p class="mt-4 text-gray-500">
+                        We created this tool to help you give life to your UI/UX Designs. It is based on Tailwind CSS, one of the most popular frameworks nowadays. Our Tailwind CSS gradients can be used in typography, buttons, cards, headers, illustrations - on almost all UI elements.
+                    </p>
+                </div>
+
+                <img class="mx-auto mt-8 lg:max-w-2xl lg:mt-0 lg:w-1/2 " src="./assets/cards.webp" alt="">
+            </div>
+        </section>
 
         <footer-component />
     </div>
