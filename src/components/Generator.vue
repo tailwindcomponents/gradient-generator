@@ -40,7 +40,7 @@
                         </div>
 
                         <div v-show="active == 'text'" class="w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
-                            <h2 v-text="text" class="text-2xl font-bold mx-auto sm:text-3xl md:text-4xl break-words" :class="classes()"> </h2>
+                            <h2 v-text="text" class="mx-auto text-2xl font-bold break-words sm:text-3xl md:text-4xl" :class="classes()"> </h2>
                         </div>
 
                         <button @click="randomGradient" class="flex items-center mx-auto mt-4 space-x-3 font-semibold text-gray-500 transition-colors duration-300 hover:text-indigo-500 focus:outline-none">
@@ -77,25 +77,34 @@
                             <div class="md:w-1/2">
                                 <label class="font-medium text-gray-500">Via</label>
                                 
-                                <select v-model="viaActive" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
-                                    <option :value="false">InActive</option>
-                                    <option :value="true">Active</option>
-                                </select>
+                                <custom-select 
+                                    :options="[
+                                        { title: 'isActive', value: false },
+                                        { title: 'Active', value: true },
+                                    ]"
+                                    :default="viaActive"
+                                    @input="updateViaActive"
+                                />
                             </div>
 
                              <div class="mt-4 md:w-1/2 md:mt-0">
                                 <label class="font-medium text-gray-500">Direction</label>
                                 
-                                <select v-model="direction" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
-                                    <option value="bg-gradient-to-t">To Top</option>
-                                    <option value="bg-gradient-to-tr">To Top Right</option>
-                                    <option value="bg-gradient-to-r">To Right</option>
-                                    <option value="bg-gradient-to-br">To Bottom Right</option>
-                                    <option value="bg-gradient-to-b">To Bottom</option>
-                                    <option value="bg-gradient-to-bl">To Bottom Left</option>
-                                    <option value="bg-gradient-to-l">To Left</option>
-                                    <option value="bg-gradient-to-tl">To Top Left</option>
-                                </select>
+                                <custom-select 
+                                    :options="[
+                                        { title: 'To Top', value: 'bg-gradient-to-t' },
+                                        { title: 'To Top Right', value: 'bg-gradient-to-tr' },
+                                        { title: 'To Right', value: 'bg-gradient-to-r' },
+                                        { title: 'To Bottom Right', value: 'bg-gradient-to-br' },
+                                        { title: 'To Bottom', value: 'bg-gradient-to-b' },
+                                        { title: 'To Bottom Left', value: 'bg-gradient-to-bl' },
+                                        { title: 'To Left', value: 'bg-gradient-to-l' },
+                                        { title: 'To Top Left', value: 'bg-gradient-to-tl' },
+                                    ]"
+                                    :default="direction"
+                                    :defaultTitle="'To Right'"
+                                    @input="updateDirection"
+                                />
                             </div>
                         </div>
 
@@ -128,11 +137,12 @@
 <script>
 import ToggleActive from "./ToggleActive.vue";
 import ColorPalette from "./ColorPalette.vue";
+import CustomSelect from "./CustomSelect.vue";
 
 export default {
     props: ['gradients'],
     
-    components: { ToggleActive, ColorPalette },
+    components: { ToggleActive, ColorPalette, CustomSelect },
 
     data() {
         return {
@@ -162,6 +172,14 @@ export default {
 
         updateFromColor(newColor) {
             this.from = newColor;
+        },
+
+        updateViaActive(newValue) {
+            this.viaActive = newValue
+        },
+
+        updateDirection(newValue) {
+            this.direction = newValue
         },
 
         updateViaColor(newColor) {

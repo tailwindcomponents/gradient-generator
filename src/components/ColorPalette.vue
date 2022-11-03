@@ -22,7 +22,7 @@
                     <div v-for="(number, index) in values" :key="index" >
                         <div>
                             <button
-                                class="w-full h-16 md:h-10 2xl:h-12 rounded-lg focus:outline-none" 
+                                class="w-full h-16 rounded-lg md:h-10 2xl:h-12 focus:outline-none" 
                                 @click="updateColor(select + '-' + color + '-' + number)" 
                                 :class="'bg-' + color + '-' + number + ' ' + (selectedColor(select + '-' + color + '-' + number) ? 'ring ring-[#0FD3CF]' :  '')"
                             >
@@ -91,7 +91,7 @@ export default {
                 return true;
             }
 
-            if (this.select == 'via' && this.via == color) {
+            if (this.select == 'via' && this.via == color && this.viaActive) {
                 return true;
             }
 
