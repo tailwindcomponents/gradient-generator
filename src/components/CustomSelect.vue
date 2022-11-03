@@ -15,7 +15,7 @@
 
 
         <div 
-          class="absolute left-0 z-20 w-full py-2 mt-2 bg-white border border-gray-100 rounded-lg shadow-xl top-12 dark:border-gray-700 lg:left-auto lg:right-0 dark:bg-gray-800" 
+          class="absolute left-0 z-20 w-full py-2 mt-2 bg-white border border-gray-100 rounded-lg shadow-xl top-12 lg:left-auto lg:right-0" 
           v-show="open"
         >
             <div
