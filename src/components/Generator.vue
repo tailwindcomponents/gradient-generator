@@ -9,14 +9,14 @@
             </div>
 
             <div class="mt-10">
-                <div class="relative mt-12 lg:flex lg:space-x-10 xl:space-x-16">
+                <div class="relative mt-12 lg:flex">
                     <div class="w-full lg:w-1/2 xl:w-2/5">
                         <h3 class="text-xl font-semibold text-gray-800 ">Choose Colors</h3>
 
                         <p class="max-w-md mt-2 text-gray-500 ">Pick colors from the Tailwind CSS Palette that fit your design.</p>
                     </div>
 
-                    <div class="w-full mt-4 lg:w-1/2 xl:w-3/5 lg:mt-0" v-show="active == 'text'">
+                    <div class="w-full mt-4 lg:w-1/2 lg:pl-10 xl:pl-16 xl:w-3/5 lg:mt-0" v-show="active == 'text'">
                         <div>
                             <label class="font-medium text-gray-500">Your Text</label>
                             
@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-                <div class="relative mt-6 lg:flex lg:space-x-10 xl:space-x-16">
+                <div class="relative mt-6 lg:flex">
                     <div class="transition-all duration-500 " :class="fullWidth ? 'w-full ease-in' : ' lg:w-1/2 xl:w-2/5 ease-out'">
                         <div v-show="active == 'background'" class="relative w-full rounded-xl h-72 md:h-96 xl:h-[28rem]" :class="classes()">
                             <button @click="fullWidth = !fullWidth" class="absolute hidden p-3 transition-colors duration-300 bg-white rounded-full lg:block focus:outline-none hover:bg-indigo-100 right-4 top-4">
@@ -39,8 +39,8 @@
                             </button>
                         </div>
 
-                        <div v-show="active == 'text'" class="w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
-                            <h2 v-text="text" class="mx-auto text-2xl font-bold break-words sm:text-3xl md:text-4xl" :class="classes()"> </h2>
+                        <div v-show="active == 'text'" class="w-full flex items-center p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
+                            <h2 v-text="text" class="mx-auto text-2xl font-bold break-words sm:text-3xl md:text-4xl truncate" :class="classes()"> </h2>
                         </div>
 
                         <button @click="randomGradient" class="flex items-center mx-auto mt-4 space-x-3 font-semibold text-gray-500 transition-colors duration-300 hover:text-indigo-500 focus:outline-none">
@@ -52,7 +52,7 @@
                         </button>
                     </div>
 
-                    <div v-show="!fullWidth" class="mt-6 lg:mt-0 lg:w-1/2 xl:w-3/5" >
+                    <div v-show="!fullWidth" class="mt-6 lg:mt-0 lg:pl-10 xl:pl-16 lg:w-1/2 xl:w-3/5" >
                         <color-palette 
                             :to="to"
                             :from="from" 
