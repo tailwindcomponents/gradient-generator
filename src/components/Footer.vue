@@ -5,7 +5,7 @@
                 <img class="object-cover object-left h-6" src="../assets/logo.svg" alt="Tailwindcomponents logo">
             </div>
 
-            <p class="text-sm text-center text-gray-500">&copy; {{ new Date().getFullYear() }} Creative Tim, all rights reserved. Made with ❤️ for a better web.</p>
+            <p class="text-sm text-center text-gray-500">&copy; {{ new Date().getFullYear() }} <a target="_blank" href="https://tailwindcomponents.com" class="hover:text-primary">tailwindcomponents</a> designed by <a target="_blank" href="https://www.creative-tim.com/" class="hover:text-primary">Creative Tim</a>, all rights reserved. Made with ❤️ for a better web.</p>
 
             <div class="flex items-center space-x-6">
                 <a href="https://twitter.com/TwComponents" target="_blink" class="text-gray-500 transition-colors duration-300 hover:text-primary">

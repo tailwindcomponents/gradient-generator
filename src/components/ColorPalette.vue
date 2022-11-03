@@ -5,7 +5,7 @@
                 From Color
             </button>
 
-            <button :disabled="isChange" @click="select = 'via'" :class="select == 'via' ? 'text-gray-800' : 'text-gray-400 hover:text-gray-600'" class="font-semibold transition-colors duration-300 focus:outline-none">
+            <button v-if="viaActive" :disabled="isChange" @click="select = 'via'" :class="select == 'via' ? 'text-gray-800' : 'text-gray-400 hover:text-gray-600'" class="font-semibold transition-colors duration-300 focus:outline-none">
                 Via Color
             </button>
 
@@ -18,17 +18,17 @@
              <div v-for="(color, index) in colors" :key="index">
                 <p class="mb-2 text-gray-600 capitalize" v-text="color"></p>
                 
-                <div class="grid grid-cols-3 gap-6 sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-6 xl:grid-cols-10">
+                <div class="grid grid-cols-4 gap-6 md:gap-4 2xl:gap-6 sm:grid-cols-7 md:grid-cols-10 lg:grid-cols-6 xl:grid-cols-10">
                     <div v-for="(number, index) in values" :key="index" >
-                        <div class="rounded-lg" :class="selectedColor(select + '-' + color + '-' + number)">
+                        <div>
                             <button
-                                class="w-full h-10 rounded-lg focus:outline-none" 
+                                class="w-full h-10 sm:h-12 rounded-lg md:h-10 2xl:h-12 focus:outline-none" 
                                 @click="updateColor(select + '-' + color + '-' + number)" 
-                                :class="'bg-' + color + '-' + number"
+                                :class="'bg-' + color + '-' + number + ' ' + (selectedColor(select + '-' + color + '-' + number) ? 'ring ring-[#0FD3CF]' :  '')"
                             >
                             </button>
                             
-                            <h3 class="mt-1 text-sm font-medium text-center text-gray-500" v-text="number"></h3>
+                            <p class="mt-1 text-sm text-center" :class="selectedColor(select + '-' + color + '-' + number) ? 'text-[#0FD3CF] font-bold' : 'text-gray-500 font-medium'" v-text="number"></p>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,13 @@
 
 <script>
 export default {
-    props: ['from', 'to', 'via'],
+    props: {
+        from: String,
+        to: String,
+        via: String,
+        viaActive: Boolean
+    },
+    
 
     data() {
         return {
@@ -77,26 +83,20 @@ export default {
             this.isChange = true;
 
             setTimeout(() => this.isChange = false, 500);
-        }
+        },
     },
     methods: {
         selectedColor(color) {
-            if (this.select == 'from') {
-                if (this.from == color) {
-                    return 'ring ring-[#0FD3CF]';
-                }
+            if (this.select == 'from' && this.from == color) {
+                return true;
             }
 
-            if (this.select == 'via') {
-                if (this.via == color) {
-                    return 'ring ring-[#0FD3CF]';
-                }
+            if (this.select == 'via' && this.via == color && this.viaActive) {
+                return true;
             }
 
-            if (this.select == 'to') {
-                if (this.to == color) {
-                    return 'ring ring-[#0FD3CF]';
-                }
+            if (this.select == 'to' && this.to == color) {
+                return true;
             }
         },
 

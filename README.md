@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="public/gradinet-generator.png" alt="gradinet-generator"></p>
+    <img src="public/tailwind-gradient-generator-thumbnail.webp" alt="gradinet-generator"></p>
 
 ## Tailwind Components Gradient Generator
 This repo content a Gradient Generator page from [tailwindcompnents.com](https://tailwindcomponents.com/gradient-generator/), Build with Vuejs.
@@ -16,18 +16,33 @@ This repo content a Gradient Generator page from [tailwindcompnents.com](https:/
     <img src="https://img.shields.io/twitter/url?label=Tailwindcomponents&style=social&url=https%3A%2F%2Ftwitter.com%2FTwComponents">
 </a>
 
-### Project setup
+## Installation
+
+### Install NPM dependency
+
 ```
+npm install 
+
+OR
+
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
 ```
+npm run dev
+
+OR
+
 yarn dev
 ```
 
 ### Compiles and minifies for production
 ```
+npm run build
+
+OR
+
 yarn build
 ```
 

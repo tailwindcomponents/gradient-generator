@@ -9,14 +9,14 @@
             </div>
 
             <div class="mt-10">
-                <div class="relative mt-12 lg:flex lg:space-x-10 xl:space-x-16">
+                <div class="relative mt-12 lg:flex">
                     <div class="w-full lg:w-1/2 xl:w-2/5">
                         <h3 class="text-xl font-semibold text-gray-800 ">Choose Colors</h3>
 
                         <p class="max-w-md mt-2 text-gray-500 ">Pick colors from the Tailwind CSS Palette that fit your design.</p>
                     </div>
 
-                    <div class="w-full mt-4 lg:w-1/2 xl:w-3/5 lg:mt-0" v-show="active == 'text'">
+                    <div class="w-full mt-4 lg:w-1/2 lg:pl-10 xl:pl-16 xl:w-3/5 lg:mt-0" v-show="active == 'text'">
                         <div>
                             <label class="font-medium text-gray-500">Your Text</label>
                             
@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-                <div class="relative mt-6 lg:flex lg:space-x-10 xl:space-x-16">
+                <div class="relative mt-6 lg:flex">
                     <div class="transition-all duration-500 " :class="fullWidth ? 'w-full ease-in' : ' lg:w-1/2 xl:w-2/5 ease-out'">
                         <div v-show="active == 'background'" class="relative w-full rounded-xl h-72 md:h-96 xl:h-[28rem]" :class="classes()">
                             <button @click="fullWidth = !fullWidth" class="absolute hidden p-3 transition-colors duration-300 bg-white rounded-full lg:block focus:outline-none hover:bg-indigo-100 right-4 top-4">
@@ -39,8 +39,8 @@
                             </button>
                         </div>
 
-                        <div v-show="active == 'text'" class="flex items-center justify-center w-full p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
-                            <h2 v-text="text" class="text-2xl font-bold sm:text-3xl md:text-4xl " :class="classes()"> </h2>
+                        <div v-show="active == 'text'" class="w-full flex items-center p-6 bg-gray-50 rounded-xl h-72 md:h-96 xl:h-[28rem]">
+                            <h2 v-text="text" class="mx-auto text-2xl font-bold break-words sm:text-3xl md:text-4xl truncate" :class="classes()"> </h2>
                         </div>
 
                         <button @click="randomGradient" class="flex items-center mx-auto mt-4 space-x-3 font-semibold text-gray-500 transition-colors duration-300 hover:text-indigo-500 focus:outline-none">
@@ -52,9 +52,12 @@
                         </button>
                     </div>
 
-                    <div v-show="!fullWidth" class="mt-6 lg:mt-0 lg:w-1/2 xl:w-3/5" >
+                    <div v-show="!fullWidth" class="mt-6 lg:mt-0 lg:pl-10 xl:pl-16 lg:w-1/2 xl:w-3/5" >
                         <color-palette 
-                            :from="from" :via="via" :to="to"
+                            :to="to"
+                            :from="from" 
+                            :via="via" 
+                            :viaActive="viaActive"
                             @updateFromColor="updateFromColor"
                             @updateViaColor="updateViaColor"
                             @updateToColor="updateToColor"
@@ -74,25 +77,34 @@
                             <div class="md:w-1/2">
                                 <label class="font-medium text-gray-500">Via</label>
                                 
-                                <select v-model="viaActive" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
-                                    <option value="false">InActive</option>
-                                    <option value="true">Active</option>
-                                </select>
+                                <custom-select 
+                                    :options="[
+                                        { title: 'Inactive', value: false },
+                                        { title: 'Active', value: true },
+                                    ]"
+                                    :default="viaActive"
+                                    @input="updateViaActive"
+                                />
                             </div>
 
                              <div class="mt-4 md:w-1/2 md:mt-0">
                                 <label class="font-medium text-gray-500">Direction</label>
                                 
-                                <select v-model="direction" class="w-full h-12 px-4 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-opacity-20">
-                                    <option value="bg-gradient-to-t">To Top</option>
-                                    <option value="bg-gradient-to-tr">To Top Right</option>
-                                    <option value="bg-gradient-to-r">To Right</option>
-                                    <option value="bg-gradient-to-br">To Bottom Right</option>
-                                    <option value="bg-gradient-to-b">To Bottom</option>
-                                    <option value="bg-gradient-to-bl">To Bottom Left</option>
-                                    <option value="bg-gradient-to-l">To Left</option>
-                                    <option value="bg-gradient-to-tl">To Top Left</option>
-                                </select>
+                                <custom-select 
+                                    :options="[
+                                        { title: 'To Top', value: 'bg-gradient-to-t' },
+                                        { title: 'To Top Right', value: 'bg-gradient-to-tr' },
+                                        { title: 'To Right', value: 'bg-gradient-to-r' },
+                                        { title: 'To Bottom Right', value: 'bg-gradient-to-br' },
+                                        { title: 'To Bottom', value: 'bg-gradient-to-b' },
+                                        { title: 'To Bottom Left', value: 'bg-gradient-to-bl' },
+                                        { title: 'To Left', value: 'bg-gradient-to-l' },
+                                        { title: 'To Top Left', value: 'bg-gradient-to-tl' },
+                                    ]"
+                                    :default="direction"
+                                    :defaultTitle="'To Right'"
+                                    @input="updateDirection"
+                                />
                             </div>
                         </div>
 
@@ -125,11 +137,12 @@
 <script>
 import ToggleActive from "./ToggleActive.vue";
 import ColorPalette from "./ColorPalette.vue";
+import CustomSelect from "./CustomSelect.vue";
 
 export default {
     props: ['gradients'],
     
-    components: { ToggleActive, ColorPalette },
+    components: { ToggleActive, ColorPalette, CustomSelect },
 
     data() {
         return {
@@ -161,6 +174,14 @@ export default {
             this.from = newColor;
         },
 
+        updateViaActive(newValue) {
+            this.viaActive = newValue
+        },
+
+        updateDirection(newValue) {
+            this.direction = newValue
+        },
+
         updateViaColor(newColor) {
             this.via = newColor;
         },
@@ -171,14 +192,14 @@ export default {
 
         classes() {
             if (this.active == 'background') {
-                if (this.viaActive == 'true') {
+                if (this.viaActive == true) {
                     return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to;
                 }
     
                 return this.direction + ' ' + this.from + ' ' + this.to;
             }
 
-            if (this.viaActive == 'true') {
+            if (this.viaActive == true) {
                 return this.direction + ' ' + this.from + ' ' + this.via + ' ' + this.to + ' bg-clip-text text-transparent';
             }
 

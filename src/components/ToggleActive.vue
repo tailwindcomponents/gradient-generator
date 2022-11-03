@@ -7,7 +7,7 @@
                 </svg>
 
                 <span>
-                    Backgorund
+                    Background
                 </span>
             </button>
 
