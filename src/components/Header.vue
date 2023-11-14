@@ -30,6 +30,11 @@
                     <h1 class="mt-3 text-4xl font-bold ">Tailwind CSS Gradient Generator</h1>
 
                     <p class="max-w-lg mt-4 ">Mix Tailwind CSS Colors and generate stunning text and background gradients or use our ready-made gradients to create remarkable designs.</p>
+                    <div class="flex items-center justify-center max-w-xl px-4 mx-auto mt-4 text-base text-center text-gray-500 dark:text-gray-400 md:text-lg">
+                        <a href="https://www.material-tailwind.com/roots-of-ui-ux-design?ref=tc-gradient" target="_blank">
+                            <img src="../assets/banner-root-ui-ux-book.png" alt="Roots of UI/UX Design - Learn to Develop Intuitive Web Experiences." class="rounded-lg"/>
+                        </a>
+                    </div>
                 
                     <a href="#generator" class="inline-block px-6 py-3 mt-6 font-medium transition-colors duration-300 bg-gray-900 rounded-lg hover:bg-gray-800">
                         Generate

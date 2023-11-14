@@ -9,7 +9,9 @@
         <section class="container px-4 pb-20 mx-auto">
             <div class="lg:flex lg:items-center lg:space-x-12">
                 <div class="lg:w-1/2 ">
-                    <span class="text-xl font-bold text-transparent bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 bg-clip-text">Open Source Tool</span>
+                    <span class="text-xl font-bold text-transparent bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 bg-clip-text">
+                        Open Source Tool
+                    </span>
 
                     <h2 class="mt-4 text-3xl font-bold text-gray-800">
                         Tailwind CSS Gradient Generator
@@ -18,6 +20,12 @@
                     <p class="mt-4 text-gray-500">
                         Gradient refers to the gradual transition from one color to another color or multiple colors. It makes objects stand out by adding a new dimension to the design and adding realism to the object. In fact, real life is not made of flat objects with flat colors.
                     </p>
+
+                    <div class="flex items-center justify-center max-w-2xl px-4 mx-auto mt-4 text-base text-center text-gray-500 dark:text-gray-400 md:text-lg">
+                        <a href="https://www.material-tailwind.com/roots-of-ui-ux-design?ref=tc-gradient" target="_blank">
+                            <img src="./assets/banner-root-ui-ux-book.png" alt="Roots of UI/UX Design - Learn to Develop Intuitive Web Experiences." class="rounded-lg"/>
+                        </a>
+                    </div>
 
                     <p class="mt-4 text-gray-500">
                         We created this tool to help you give life to your UI/UX Designs. It is based on Tailwind CSS, one of the most popular frameworks nowadays. Our Tailwind CSS gradients can be used in typography, buttons, cards, headers, illustrations - on almost all UI elements.
